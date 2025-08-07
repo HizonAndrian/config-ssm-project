@@ -4,8 +4,8 @@ variable "arn_role_policy" {
   default = "arn:aws:iam::aws:policy/service-role/AWS_ConfigRole"
 }
 
-variable "config_status" {
-  type = bool
+variable "s3_bucket_name" {
+  type = string
 
-  default = true
+  default = "s3-config-delivery-channel-051399"
 }

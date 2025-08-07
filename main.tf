@@ -4,7 +4,7 @@ resource "aws_config_configuration_recorder" "config_recorder" {
 
   recording_group {
     all_supported  = false
-    resource_types = ["AWS::EC2::Volume"]
+    resource_types = ["AWS::EC2::Volume", "AWS::EC2::Instance"]
   }
 }
 
@@ -16,7 +16,7 @@ resource "aws_config_delivery_channel" "config_delivery_channel" {
 
 resource "aws_config_configuration_recorder_status" "start_recorder" {
   name       = aws_config_configuration_recorder.config_recorder.name
-  is_enabled = var.config_status
+  is_enabled = true
 
   depends_on = [
     aws_config_configuration_recorder.config_recorder,
@@ -46,12 +46,12 @@ resource "aws_config_remediation_configuration" "config_remediation" {
   retry_attempt_seconds      = 120
 
   parameter {
-    name           = "VolumeIds"
-    resource_value = "RESOURCE_ID"
+    name         = "AutomationAssumeRole"
+    static_value = aws_iam_role.ssm_role.arn
   }
 
   parameter {
-    name         = "AutomationAssumeRole"
-    static_value = aws_iam_role.ssm_role.arn
+    name           = "VolumeIds"
+    resource_value = "RESOURCE_ID"
   }
 }

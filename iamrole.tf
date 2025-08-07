@@ -1,6 +1,6 @@
-###################################
-######   IAM ROLE FOR AWS CONFIG
-###################################
+#####################################
+###     IAM ROLE FOR AWS CONFIG
+######################################
 resource "aws_iam_role" "config-role" {
   name = "config_role"
 
@@ -68,7 +68,8 @@ resource "aws_iam_role_policy" "ssm_policy" {
         Action = [
           "ec2:StopInstances",
           "ec2:DescribeVolumes",
-          "ec2:DescribeInstances"
+          "ec2:DescribeInstances",
+          "ec2:DescribeInstanceStatus"
         ]
         Effect   = "Allow"
         Resource = "*"

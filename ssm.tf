@@ -32,7 +32,7 @@ mainSteps:
     action: aws:changeInstanceState
     inputs:
       InstanceIds: 
-        - "{{ getInstanceFromVolume.InstanceIds }}"
+      - "{{ getInstanceFromVolume.InstanceIds }}"
       DesiredState: stopped
 DOC
 }

@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "s3_config" {
-  bucket = "s3-config-delivery-channel-051399"
+  bucket = var.s3_bucket_name
 
 }
 
