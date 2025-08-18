@@ -7,7 +7,11 @@
 
 
 # 📐 Architecture
-
+- ✅ Automatic compliance monitoring for EBS encryption
+- 🔄 Auto-remediation of non-compliant EC2 instances (stop action)
+- 🔐 Secure OIDC authentication (multi-workspace support)
+- 📝 Infrastructure as Code with Terraform
+- 🚀 Extensible to other AWS Config rules
 
 # Key Features
 
