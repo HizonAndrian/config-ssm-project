@@ -3,7 +3,7 @@
 
 
 # Overview
-    This project demonstrates how to use AWS Config and AWS Systems Manager (SSM) to automatically remediate non-compliant EC2 instances that do not have EBS encryption enabled. The solution uses AWS Config rules to detect non-compliance and triggers SSM automation documents to encrypt the EBS volumes of the affected instances.
+  This project demonstrates how to use AWS Config and AWS Systems Manager (SSM) to automatically remediate non-compliant EC2 instances that do not have EBS encryption enabled. The solution uses AWS Config rules to detect non-compliance and triggers SSM automation documents to encrypt the EBS volumes of the affected instances.
 
 
 # 📐 Architecture
