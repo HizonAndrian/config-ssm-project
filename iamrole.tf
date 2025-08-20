@@ -1,6 +1,7 @@
 #####################################
 ###     IAM ROLE FOR AWS CONFIG
 ######################################
+
 resource "aws_iam_role" "config-role" {
   name = "config_role"
 
