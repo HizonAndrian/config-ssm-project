@@ -1,0 +1,12 @@
+name: terraform-plan workflow
+
+on: [workflow_dispatch]
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Test
+        run: echo "Workflow working."
