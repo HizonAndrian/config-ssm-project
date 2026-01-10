@@ -32,3 +32,6 @@ jobs:
 
       - name: Run TFLint
         run: tflint
+
+      - name: Terraform plan
+        run: terraform plan
