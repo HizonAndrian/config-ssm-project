@@ -48,11 +48,10 @@ jobs:
         run: terraform init
 
       - name: Terraform plan
-        id: tf-plan
         run: terraform plan -out=tfplan
+        continue-on-error: true
 
       - name: Save plan output
-        if: ${{ steps.tf-plan.outcome == 'failure' || steps.tf-plan.outcome == 'success' }}
         uses: actions/upload-artifact@v4
         with:
           name: terraform-plan
