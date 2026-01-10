@@ -3,20 +3,29 @@ name: terraform-plan workflow
 on: [workflow_dispatch]
 
 jobs:
-  plan:
+  testing:
     runs-on: ubuntu-latest
     env:
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
     steps:
-      - name: Install terraform
-        uses: hashicorp/setup-terraform@v3
-
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Terraform format checking
+        run: terraform fmt -check
+
+      - name: Terraform validate
+        run: terraform validate
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v1
+
+      - name: Run TFLint
+        run: tflint
+
+      - name: Install terraform
+        uses: hashicorp/setup-terraform@v3
+
       - name: Terraform init
         run: terraform init
-
-      - name: Terraform plan
-        run: terraform plan
