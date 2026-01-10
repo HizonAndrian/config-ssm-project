@@ -5,11 +5,12 @@ on:
     branches:
       - main
 
+env:
+  TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+
 jobs:
   testing:
     runs-on: ubuntu-latest
-    env:
-      TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
     steps:
       - name: Checkout code
@@ -33,5 +34,18 @@ jobs:
       - name: Run TFLint
         run: tflint
 
+  plans:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Terraform CLI
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Initialize terraform
+        run: terraform init
+
       - name: Terraform plan
-        run: terraform plan
+        run: terraform plan -out=tfplan
