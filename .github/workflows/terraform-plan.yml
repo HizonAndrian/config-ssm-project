@@ -3,7 +3,7 @@ name: terraform-plan workflow
 on: [workflow_dispatch]
 
 env:
-  TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+  TF_API_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
 jobs:
   plan:
