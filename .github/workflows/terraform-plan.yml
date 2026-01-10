@@ -2,8 +2,6 @@ name: terraform-plan workflow
 
 on: [workflow_dispatch]
 
-env:
-  TF_API_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
 jobs:
   plan:
@@ -14,6 +12,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Terraform init
+        env:
+          TF_API_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
         run: terraform init
       - name: Terraform plan
         run: terraform plan
