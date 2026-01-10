@@ -9,7 +9,11 @@ jobs:
   plan:
     runs-on: ubuntu-latest
     steps:
+      - name: Install terraform
+        uses: hashicorp/setup-terraform@v3
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Test
+      - name: Terraform init
+        run: terraform init
+      - name: Terraform plan
         run: terraform plan
