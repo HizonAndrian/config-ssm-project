@@ -7,5 +7,5 @@ variable "arn_role_policy" {
 variable "s3_bucket_name" {
   type = string
 
-  default = "s3-config-delivery-channel-051399"
+  default = "s3-config-delivery-Channel-051399"
 }
