@@ -2,6 +2,7 @@ resource "aws_config_configuration_recorder" "config_recorder" {
   name     = "config_recorder"
   role_arn = aws_iam_role.config-role.arn
 
+  # Resources to be tracked
   recording_group {
     all_supported  = false
     resource_types = ["AWS::EC2::Volume", "AWS::EC2::Instance"]
@@ -28,6 +29,7 @@ resource "aws_config_config_rule" "config_rule" {
   name = "config_rule"
 
   source {
+    # Used a managed AWS Rule
     owner             = "AWS"
     source_identifier = "ENCRYPTED_VOLUMES"
   }
@@ -42,7 +44,7 @@ resource "aws_config_remediation_configuration" "config_remediation" {
   target_id        = aws_ssm_document.stop_instance.name
 
   automatic                  = true
-  maximum_automatic_attempts = 3
+  maximum_automatic_attempts = 2
   retry_attempt_seconds      = 120
 
   parameter {
